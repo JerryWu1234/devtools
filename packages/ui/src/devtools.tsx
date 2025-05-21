@@ -38,6 +38,7 @@ import { DevtoolsPanel } from "./components/DevtoolsPanel/DevtoolsPanel";
 import { Packages } from "./features/Packages/Packages";
 import { Components } from "./features/Components/Components";
 import { Inspect } from "./features/inspect/Inspect";
+import { ThemeSwitcher } from "./components/ThemeSwitcher/ThemeSwitcher";
 
 function getClientRpcFunctions() {
   return {
@@ -132,6 +133,11 @@ export const QwikDevtools = component$(() => {
             <Tab state={state} id="inspect" title="inspect">
               <HiMegaphoneMini class="h-5 w-5" />
             </Tab>
+
+            {/* ThemeSwitcher at the bottom of the tab bar */}
+            <div class="mt-auto">
+              <ThemeSwitcher />
+            </div>
           </div>
 
           <div class="custom-scrollbar flex-1 overflow-y-auto p-4">

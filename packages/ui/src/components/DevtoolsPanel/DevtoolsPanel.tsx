@@ -42,7 +42,7 @@ export const DevtoolsPanel = component$(({ state }: DevtoolsPanelProps) => {
   return (
     <div
       ref={panelRef}
-      class="fixed bottom-6 right-6  flex h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] translate-y-0 transform overflow-hidden rounded-lg border-2 border-white/10 bg-zinc-900 text-white backdrop-blur-lg transition-transform duration-300 ease-in-out"
+      class="fixed bottom-6 right-6  flex h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] translate-y-0 transform overflow-hidden rounded-lg border-2 border-[var(--color-border-translucent)] bg-background text-foreground backdrop-blur-lg transition-transform duration-300 ease-in-out"
     >
       <Slot />
     </div>

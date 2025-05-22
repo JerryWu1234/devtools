@@ -48,7 +48,7 @@ export const Packages = component$(() => {
             debounceSearch(target.value);
           }}
           placeholder="Search npm packages..."
-          class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-white placeholder-zinc-500 outline-none focus:border-white/20"
+          class="w-full rounded-lg border border-[var(--color-border-translucent)] bg-foreground bg-opacity-5 px-4 py-2 text-sm text-foreground placeholder-muted-foreground outline-none focus:border-ring"
         />
       </div>
 
@@ -56,11 +56,11 @@ export const Packages = component$(() => {
         value={searchResults}
         onPending={() => (
           <div class="absolute right-3 top-1">
-            <div class="h-5 w-5 animate-spin rounded-full border-2 border-white/10 border-t-white/40" />
+            <div class="h-5 w-5 animate-spin rounded-full border-2 border-[var(--color-border-translucent)] border-t-primary" />
           </div>
         )}
         onRejected={(error) => (
-          <div class="mt-2 text-xs text-red-400">
+          <div class="mt-2 text-xs text-red-400"> {/* Error color left as is, no semantic equivalent yet */}
             {error.message || "Failed to fetch packages"}
           </div>
         )}
@@ -71,12 +71,12 @@ export const Packages = component$(() => {
                 return (
                   <div
                     key={pkg.name}
-                    class="flex flex-col gap-2 rounded-lg bg-white/5 p-3"
+                    class="flex flex-col gap-2 rounded-lg bg-foreground bg-opacity-5 p-3"
                   >
                     <div class="flex items-center justify-between">
-                      <div class="text-sm">{pkg.name}</div>
+                      <div class="text-sm">{pkg.name}</div> {/* Inherits text-foreground */}
                       <div class="flex items-center gap-2">
-                        <div class="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-zinc-400">
+                        <div class="rounded-full border border-[var(--color-border-translucent)] bg-foreground bg-opacity-5 px-2 py-1 text-xs text-muted-foreground">
                           {pkg.version}
                         </div>
                         <InstallButton
@@ -85,7 +85,7 @@ export const Packages = component$(() => {
                         />
                       </div>
                     </div>
-                    <div class="line-clamp-2 text-xs text-zinc-400">
+                    <div class="line-clamp-2 text-xs text-muted-foreground">
                       {pkg.description}
                     </div>
                   </div>

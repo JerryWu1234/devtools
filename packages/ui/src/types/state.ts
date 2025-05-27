@@ -17,4 +17,5 @@ export interface State {
   assets: AssetInfo[];
   components: Component[];
   routes: NoSerialize<RoutesInfo[]>;
+  isFull: boolean
 }

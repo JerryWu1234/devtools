@@ -8,7 +8,7 @@ export default () => {
         <title>Qwik Blank App</title>
       </head>
       <body>
-        <QwikDevtools />
+        <QwikDevtools isFull  />
       </body>
     </>
   );

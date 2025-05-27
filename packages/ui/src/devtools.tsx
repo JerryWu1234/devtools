@@ -45,7 +45,11 @@ function getClientRpcFunctions() {
   };
 }
 
-export const QwikDevtools = component$(() => {
+interface QwikDevtoolsProps{
+  isFull?: boolean;
+}
+
+export const QwikDevtools = component$(({isFull = false}:QwikDevtoolsProps) => {
   useStyles$(globalCss);
 
   const state = useStore<State>({
@@ -55,6 +59,7 @@ export const QwikDevtools = component$(() => {
     assets: [],
     components: [],
     routes: undefined,
+    isFull,
   });
 
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -109,9 +114,9 @@ export const QwikDevtools = component$(() => {
 
   return (
     <DevtoolsContainer>
-      <DevtoolsButton state={state} />
+      {state.isFull && <DevtoolsButton state={state} />}
 
-      {state.isOpen.value && (
+      {(state.isOpen.value || state.isFull) && (
         <DevtoolsPanel state={state}>
           <div class="flex flex-col gap-2 border-r border-zinc-700 bg-zinc-900/95 p-3">
             <Tab state={state} id="overview" title="Overview">

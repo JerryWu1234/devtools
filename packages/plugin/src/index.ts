@@ -41,7 +41,7 @@ export function qwikDevtools(): Plugin[] {
             const bodyContent = match[1];
             const newBodyContent = bodyContent.replace(
               /{!isDev && <ServiceWorkerRegister \/>}/,
-              `{!isDev && <ServiceWorkerRegister />}\n        {isDev && <QwikDevtools />}`,
+              `{!isDev && <ServiceWorkerRegister />}\n        {<QwikDevtools />}`,
             );
             code = code.replace(bodyContent, newBodyContent);
           }

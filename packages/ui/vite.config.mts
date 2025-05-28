@@ -1,5 +1,6 @@
 import { qwikVite } from "@qwik.dev/core/optimizer";
 import { defineConfig } from "vite";
+import { qwikRouter } from "@qwik.dev/router/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
 import { qwikReact } from "@qwik.dev/react/vite";
@@ -11,17 +12,17 @@ export default defineConfig(() => {
   return {
     build: {
       target: "es2020",
-      lib: {
-        entry: "./src/index.ts",
-        formats: ["es", "cjs"],
-        fileName: (format, entryName) =>
-          `${entryName}.qwik.${format === "es" ? "mjs" : "cjs"}`,
-      },
+      // lib: {
+      //   entry: "./src/index.ts",
+      //   formats: ["es", "cjs"],
+      //   fileName: (format, entryName) =>
+      //     `${entryName}.qwik.${format === "es" ? "mjs" : "cjs"}`,
+      // },
       rollupOptions: {
-        output: {
-          preserveModules: true,
-          preserveModulesRoot: "src",
-        },
+        // output: {
+        //   preserveModules: true,
+        //   preserveModulesRoot: "src",
+        // },
         // externalize deps that shouldn't be bundled into the library
         external: [
           "stream",
@@ -32,6 +33,6 @@ export default defineConfig(() => {
         ],
       },
     },
-    plugins: [qwikVite(), tsconfigPaths(), qwikReact()],
+    plugins: [qwikRouter(), qwikVite(), tsconfigPaths(), qwikReact()],
   };
 });

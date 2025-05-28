@@ -45,3 +45,9 @@ The production build should generate the production build of your component libr
 ```
 pnpm build
 ```
+
+## Static Site Generator (Node.js)
+
+```shell
+pnpm build.server
+```

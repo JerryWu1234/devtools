@@ -6,6 +6,7 @@ import {
   useSignal,
   useTask$,
   isBrowser,
+  useVisibleTask$,
 } from '@qwik.dev/core';
 import { tryCreateHotContext } from 'vite-hot-client';
 import {
@@ -16,6 +17,7 @@ import {
   HiMegaphoneMini,
 } from '@qwikest/icons/heroicons';
 import { LuFolderTree } from '@qwikest/icons/lucide';
+import { isStore } from '@qwik.dev/core/optimizer.mjs';
 import {
   createClientRpc,
   getViteClientRpc,
@@ -40,6 +42,7 @@ import { Components } from './features/Components/Components';
 import { Inspect } from './features/inspect/Inspect';
 import { ThemeToggle } from './components/ThemeToggle/ThemeToggle';
 import { ThemeScript } from './components/ThemeToggle/theme-script';
+import { count } from 'console';
 function getClientRpcFunctions() {
   return {
     healthCheck: () => true,
@@ -56,6 +59,15 @@ export const QwikDevtools = component$(() => {
     assets: [],
     components: [],
     routes: undefined,
+  });
+
+  const store = useStore({count: 0});
+  const pureStore = {count: 0};
+  console.log('store', isStore(store));
+  console.log('pureStore', isStore(pureStore));
+  useVisibleTask$(() => {
+    console.log('store', isStore(store));
+    console.log('pureStore', isStore(pureStore));
   });
 
   useTask$(async ({ track }) => {

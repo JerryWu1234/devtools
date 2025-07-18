@@ -1,66 +1,17 @@
-# Qwik DevTools
+first step: pnpm install 
 
-![Qwik DevTools](https://raw.github.com/QwikDev/devtools/main/assets/screenshot.png)
+second step: pnpm run build 
 
-Enhance your Qwik development experience with DevTools that provide real-time insights into your application, dependencies, and setup.
+third step: cd packages/ui
 
-## Installation
+fourth step: open packages/ui/src/devtools.tsx
 
-> Qwik DevTools requires **Qwik v2.0.0-beta.1 or higher**.
+fifth step: open comment in devtools.tsx
 
-```shell copy
-npm install @qwik.dev/devtools -D
-```
+sixth step: open file @qwik.dev/core/optimizer.mjs 
 
-```shell copy
-pnpm add @qwik.dev/devtools -D
-```
+seventh step: add code `export {isStore} from './core.mjs'` into `@qwik.dev/core/optimizer.mjs`
 
-```shell copy
-yarn add @qwik.dev/devtools -D
-```
+eighth step: export isStore in `./core.mjs
 
-## Setup
-
-Add the plugin to your `vite.config.(m)ts`:
-
-```ts copy
-import { qwikDevtools } from '@qwik.dev/devtools';
-
-export default defineConfig({
-  plugins: [
-    qwikRouter(),
-    qwikVite(),
-    tsconfigPaths(),
-    qwikDevtools(), // 👈 Add the plugin here
-  ],
-});
-```
-
-## Features
-
-- 🔍 Route Explorer
-- ⚡️ Dependency Explorer
-- 📊 Asset Explorer
-- 🐞 Debug Tools
-
-## Contribution Guide
-
-Please refer to the [Contribution Guide](./CONTRIBUTING.md). Sharing feedback and feature request with GitHub issues is welcome.
-
-## Community
-
-Join our vibrant community:
-
-- 🐦 Follow [@QwikDev](https://twitter.com/QwikDev) on Twitter
-- 💬 Join our [Discord](https://qwik.dev/chat) community
-- 🌐 Check out [other community groups](https://qwik.dev/ecosystem/#community)
-
-## Related Links
-
-- [📚 Qwik Documentation](https://qwik.dev/)
-- [💬 Discord Chat](https://qwik.dev/chat)
-- [⭐️ Qwik GitHub](https://github.com/QwikDev/qwik)
-- [🐦 @QwikDev](https://twitter.com/QwikDev)
-- [⚡️ Vite](https://vitejs.dev/)
-
+ninth step: pnpm run dev in ui folder

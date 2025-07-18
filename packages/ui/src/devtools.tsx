@@ -16,7 +16,7 @@ import {
   HiMegaphoneMini,
 } from '@qwikest/icons/heroicons';
 import { LuFolderTree } from '@qwikest/icons/lucide';
-// import { isStore } from '@qwik.dev/core/optimizer.mjs';
+import { isStore } from '@qwik.dev/core/optimizer.mjs';
 import {
   createClientRpc,
   getViteClientRpc,
@@ -58,14 +58,14 @@ export const QwikDevtools = component$(() => {
     routes: undefined,
   });
 
-  // const store = useStore({count: 0});
-  // const pureStore = {count: 0};
-  // console.log('store', isStore(store));
-  // console.log('pureStore', isStore(pureStore));
-  // useVisibleTask$(() => {
-  //   console.log('store', isStore(store));
-  //   console.log('pureStore', isStore(pureStore));
-  // });
+  const store = useStore({count: 0});
+  const pureStore = {count: 0};
+  console.log('store', isStore(store));
+  console.log('pureStore', isStore(pureStore));
+  useVisibleTask$(() => {
+    console.log('store', isStore(store));
+    console.log('pureStore', isStore(pureStore));
+  });
 
   useTask$(async ({ track }) => {
     if (isBrowser) {

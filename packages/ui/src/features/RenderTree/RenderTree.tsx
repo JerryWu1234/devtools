@@ -171,7 +171,11 @@ export const RenderTree = component$(() => {
                     ? { borderBottom: '2px solid var(--color-primary-active)' }
                     : {}
                 }
+<<<<<<< HEAD
                 class="border-b-2 border-b-transparent px-4 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 ease-in-out hover:text-foreground"
+=======
+                class="border-b-2 border-b-transparent px-4 py-3 text-sm font-medium transition-all duration-300 ease-in-out text-muted-foreground hover:text-foreground"
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
               >
                 State
               </button>
@@ -182,7 +186,11 @@ export const RenderTree = component$(() => {
                     ? { borderBottom: '2px solid var(--color-primary-active)' }
                     : {}
                 }
+<<<<<<< HEAD
                 class="border-b-2 border-b-transparent px-4 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 ease-in-out hover:text-foreground"
+=======
+                class="border-b-2 border-b-transparent px-4 py-3 text-sm font-medium transition-all duration-300 ease-in-out text-muted-foreground hover:text-foreground"
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
               >
                 Code
               </button>
@@ -193,6 +201,7 @@ export const RenderTree = component$(() => {
             <div class="mt-5 flex min-h-0 flex-1 flex-col">
               <div class="rounded-lg border border-border bg-card-item-bg shadow-sm">
                 <div class="flex items-center justify-between border-b border-border px-2 py-2">
+<<<<<<< HEAD
                   <span class="text-xs font-medium text-muted-foreground">
                     Hooks
                   </span>
@@ -204,11 +213,79 @@ export const RenderTree = component$(() => {
                           item.display = true;
                           return item;
                         });
+=======
+                <span class="text-xs font-medium text-muted-foreground">Hooks</span>
+                <div class="flex items-center space-x-2">
+                  <button
+                    class="text-xs text-primary hover:underline px-2 py-1"
+                    onClick$={$(() => {
+                      hookFilters.value = hookFilters.value.map((item) => {
+                        item.display = true;
+                        return item;
+                      });
+                      stateTree.value = buildTree().filter((item) =>
+                        hookFilters.value.some(
+                          (hook) => hook.key === item?.label && hook.display,
+                        ),
+                      ) as TreeNode[];
+                    })}
+                  >
+                    Select all
+                  </button>
+                  <button
+                    class="text-xs text-muted-foreground hover:text-foreground hover:underline px-2 py-1"
+                    onClick$={$(() => {
+                      hookFilters.value = hookFilters.value.map((item) => {
+                        item.display = false;
+                        return item;
+                      });
+                      stateTree.value = buildTree().filter((item) =>
+                        hookFilters.value.some(
+                          (hook) => hook.key === item?.label && hook.display,
+                        ),
+                      ) as TreeNode[];
+                    })}
+                  >
+                    Clear
+                  </button>
+                  <button
+                    aria-label="toggle hooks"
+                    onClick$={$(() => (hooksOpen.value = !hooksOpen.value))}
+                    class="rounded p-1 text-muted-foreground hover:text-foreground"
+                  >
+                    <HiChevronUpMini
+                      class={`h-4 w-4 transition-transform duration-200 ${
+                        hooksOpen.value ? 'rotate-180' : '-rotate-90'
+                      }`}
+                    />
+                  </button>
+                </div>
+                </div>
+                <div
+                class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-3 px-3 py-2 text-sm overflow-hidden"
+                style={{
+                  maxHeight: hooksOpen.value ? '800px' : '0px',
+                  opacity: hooksOpen.value ? '1' : '0',
+                  transition: 'max-height 200ms ease, opacity 200ms ease',
+                }}
+              >
+                {hookFilters.value.map((item, idx) => (
+                  <label key={idx} class="flex items-center">
+                    <input
+                      class="h-4 w-4 rounded-full border-border focus:ring-primary-active focus:ring-offset-0 dark:bg-[#1F2937] dark:border-[#374151]"
+                      style={{ accentColor: 'var(--color-primary-active)' }}
+                      type="checkbox"
+                      checked={item.display}
+                      onChange$={(ev) => {
+                        const target = ev.target as HTMLInputElement;
+                        hookFilters.value[idx].display = target.checked;
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
                         stateTree.value = buildTree().filter((item) =>
                           hookFilters.value.some(
                             (hook) => hook.key === item?.label && hook.display,
                           ),
                         ) as TreeNode[];
+<<<<<<< HEAD
                       })}
                     >
                       Select all
@@ -274,6 +351,16 @@ export const RenderTree = component$(() => {
                 </div>
               </div>
               <div class="mt-4 min-h-0 flex-1 overflow-y-auto p-2">
+=======
+                      }}
+                    />
+                    <span class="ml-2 select-none">{item.key}</span>
+                  </label>
+                ))}
+              </div>
+              </div>
+              <div class="min-h-0 flex-1 overflow-y-auto p-2 mt-4">
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
                 <Tree
                   data={stateTree}
                   gap={10}
@@ -284,9 +371,13 @@ export const RenderTree = component$(() => {
                     const label = node.label || node.name || '';
                     const parts = label.split(':');
                     if (node.children && parts.length === 1) {
+<<<<<<< HEAD
                       return (
                         <span class="font-semibold text-pink-400">{label}</span>
                       );
+=======
+                      return <span class="font-semibold text-pink-400">{label}</span>;
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
                     }
                     if (parts.length > 1) {
                       const key = parts[0];
@@ -312,7 +403,11 @@ export const RenderTree = component$(() => {
               {codes.value.map((item, idx) => {
                 return (
                   <>
+<<<<<<< HEAD
                     <div class="mb-4 rounded-xl border border-border bg-card-item-bg p-4 shadow-sm transition-colors hover:bg-card-item-hover-bg">
+=======
+                    <div class="mb-4 rounded-xl border border-border bg-card-item-bg p-4 shadow-sm hover:bg-card-item-hover-bg transition-colors">
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
                       <div class="mb-2 break-all text-base font-semibold text-primary">
                         {item.pathId}
                       </div>

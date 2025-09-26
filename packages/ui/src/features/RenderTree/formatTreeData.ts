@@ -278,9 +278,15 @@ export function findAllQrl() {
 
 export function getQrlPath(qrl: QRL) {
   // CHUNK_KEY is not available when dev property isn't null or undefined
+<<<<<<< HEAD
   if (qrl?.dev) {
     // @ts-ignore
     return qrl?.dev.filename;
+=======
+  if(qrl?.dev){
+    // @ts-ignore
+    return qrl?.dev.filename
+>>>>>>> 28577a1 (refactor: enhance Tree component styling and functionality; update RenderTree for improved hook management)
   }
   return (qrl as any)?.[CHUNK_KEY];
 }

@@ -1,5 +1,23 @@
 # @qwik.dev/devtools
 
+## 0.2.5
+
+### Patch Changes
+
+- ea23e81: fix: run everyplugins only in development environment
+
+## 0.2.4
+
+### Patch Changes
+
+- b42ee41: style: update color palette in global.css and enhance author handling
+
+## 0.2.3
+
+### Patch Changes
+
+- 9265c38: fix(plugin): preserve Qwik lazy render metadata when wrapping components
+
 ## 0.2.2
 
 ### Patch Changes

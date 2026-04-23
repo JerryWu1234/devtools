@@ -1,13 +1,13 @@
 import { component$, useSignal, $, useTask$ } from '@qwik.dev/core';
-import type { State } from '../../types/state'; // Assuming State type is defined elsewhere
+import type { State } from '../../types/state';
 
 interface DevtoolsButtonProps {
   state: State;
 }
 
-export const DevtoolsButton = component$(({ state }: DevtoolsButtonProps) => {
+export const DevtoolsButton = component$((props: DevtoolsButtonProps) => {
   // Signal for the button's position (distance from bottom-right corner)
-  const position = useSignal({ x: 16, y: 16 });
+  const position = useSignal({ x: 24, y: 24 });
   // Signal to track if the element is currently being dragged
   const isDragging = useSignal(false);
   // Ref for the draggable element
@@ -46,9 +46,16 @@ export const DevtoolsButton = component$(({ state }: DevtoolsButtonProps) => {
     if (isDragging.value) {
       isDragging.value = false; // Stop dragging
     }
-    if (!isMoved.value) {
-      state.isOpen.value = !state.isOpen.value;
+  });
+
+  const handleClick = $(() => {
+    // Ignore click generated right after dragging.
+    if (isMoved.value) {
+      isMoved.value = false;
+      return;
     }
+    if (!props.state) return;
+    props.state.isOpen = !props.state.isOpen;
   });
 
   /**
@@ -87,15 +94,13 @@ export const DevtoolsButton = component$(({ state }: DevtoolsButtonProps) => {
   return (
     <div
       ref={elementRef}
-      class={{
-        'border-border bg-background fixed flex h-9 w-9 origin-center select-none items-center justify-center rounded-lg border backdrop-blur-md':
-          true,
-        'border-accent/50 bg-background/95 shadow-accent/35 rotate-90 shadow-lg':
-          state.isOpen.value && !isDragging.value,
-        'cursor-grab': !isDragging.value,
-        'cursor-grabbing': isDragging.value,
-        'transition-all duration-300 ease-in-out': !isDragging.value,
-      }}
+      class={[
+        'fixed flex h-14 w-14 origin-center select-none items-center justify-center rounded-full z-[9990]',
+        props.state?.isOpen && !isDragging.value
+          ? 'glass-button shadow-accent/20 rotate-90 scale-90 opacity-0 pointer-events-none'
+          : 'glass-button animate-pulsar hover:scale-105 hover:shadow-[0_0_20px_rgba(22,182,246,0.5)] opacity-100',
+        !isDragging.value ? 'cursor-pointer transition-all duration-500 ease-out' : 'cursor-grabbing scale-95 opacity-80',
+      ]}
       style={{
         bottom: `${position.value.y}px`,
         right: `${position.value.x}px`,
@@ -103,14 +108,15 @@ export const DevtoolsButton = component$(({ state }: DevtoolsButtonProps) => {
         transition: isDragging.value ? 'none' : undefined,
       }}
       onMouseDown$={handleMouseDown}
+      onClick$={handleClick}
     >
       <img
-        width={20}
-        height={20}
+        width={28}
+        height={28}
         src="https://qwik.dev/logos/qwik-logo.svg"
         alt="Qwik Logo"
         draggable={false}
-        class="pointer-events-none h-5 w-5 opacity-90 drop-shadow-md"
+        class="pointer-events-none h-7 w-7 opacity-90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
       />
     </div>
   );

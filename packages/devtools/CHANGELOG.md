@@ -1,5 +1,23 @@
 # @qwik.dev/devtools
 
+## 0.2.8
+
+### Patch Changes
+
+- a337ab5: refactor: Update iframe theme styles and improve Inspect iframe source handling
+
+## 0.2.7
+
+### Patch Changes
+
+- 73144dc: refactor: Improve UI aesthetics with updated tab and card styles, and refactor RenderTree data formatting for hooks.
+
+## 0.2.6
+
+### Patch Changes
+
+- ed594a2: feat: add ESLint configuration and update dependencies
+
 ## 0.2.5
 
 ### Patch Changes

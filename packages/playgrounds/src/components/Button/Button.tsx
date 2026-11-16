@@ -15,12 +15,10 @@ import {
   useStylesScoped$,
   createContextId,
   Resource,
-  useAsync$,
   useSerializer$,
   useConstant,
   useOn,
   useServerData,
-  useErrorBoundary,
 } from '@qwik.dev/core';
 import {
   _getDomContainer,
@@ -59,7 +57,6 @@ export default component$<ButtonProps>((props) => {
   const signal = useSignal<any>('111');
   const constantValue = useConstant(() => 'CONST');
   const serverData = useServerData<any>('demo-key');
-  const errorBoundary = useErrorBoundary();
   const location = useLocation();
   const navigate = useNavigate();
   const content = useContent();
@@ -88,7 +85,7 @@ export default component$<ButtonProps>((props) => {
     }
   });
 
-  const asyncComputedValue = useAsync$(
+  const asyncComputedValue = useComputed$(
     async ({ track }) => Promise.resolve(track(signal) + 3),
     { initial: '' },
   );
@@ -235,7 +232,6 @@ export default component$<ButtonProps>((props) => {
         </div>
         <div>Button ID: {buttonId}</div>
         <div>Constant: {constantValue}</div>
-        {errorBoundary.error && <div>Error captured</div>}
         <div>ServerData: {serverData ? JSON.stringify(serverData) : 'N/A'}</div>
         <div>Serialized N: {customSerialized.value.n}</div>
         <Resource

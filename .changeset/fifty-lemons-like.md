@@ -2,4 +2,4 @@
 '@qwik.dev/devtools': patch
 ---
 
-feat: add ESLint configuration and update dependencies
+fix: update dependencies and restore devtools compatibility with qwik v2.

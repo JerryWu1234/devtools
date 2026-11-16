@@ -1,3 +1,6 @@
 packages:
   - packages/*
 
+# Keep the declaration toolchain within CI's minimum release age.
+overrides:
+  yuku: 0.28.0

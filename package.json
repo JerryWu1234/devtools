@@ -37,10 +37,5 @@
   "bugs": {
     "url": "https://github.com/QwikDev/devtools/issues"
   },
-  "homepage": "https://github.com/QwikDev/devtools#readme",
-  "pnpm": {
-    "overrides": {
-      "yuku": "0.28.0"
-    }
-  }
+  "homepage": "https://github.com/QwikDev/devtools#readme"
 }

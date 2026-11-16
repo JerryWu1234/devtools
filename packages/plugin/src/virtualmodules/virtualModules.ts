@@ -1,6 +1,7 @@
 import { VIRTUAL_QWIK_DEVTOOLS_KEY, INNER_USE_HOOK } from '@devtools/kit';
 import useCollectHooksSource from './useCollectHooks';
 import qwikComponentProxySource from './qwikComponentProxy';
+import vnodeBridgeSource, { VNODE_BRIDGE_KEY } from './vnodeBridge';
 import { parseQwikCode } from '../parse/parse';
 import { debug } from 'debug';
 
@@ -27,7 +28,13 @@ export const VIRTUAL_MODULES: VirtualModuleConfig[] = [
     key: 'virtual:qwik-component-proxy',
     source: qwikComponentProxySource,
     hookName: '',
-  }
+  },
+  {
+    // VNode bridge: exposes getVNodeTree() on the devtools hook
+    key: VNODE_BRIDGE_KEY,
+    source: vnodeBridgeSource,
+    hookName: '',
+  },
 ];
 
 // ============================================================================
@@ -76,6 +83,7 @@ export function transformRootFile(code: string): string {
     mode === 'dev' ? '@devtools/ui/styles.css' : '@qwik.dev/devtools/ui/styles.css';
   const devtoolsImport = `import { QwikDevtools } from '${importPath}';`;
   const stylesImport = `import '${styleImportPath}';`;
+  const bridgeImport = `import '${VNODE_BRIDGE_KEY}';`;
 
   // Add QwikDevtools import if not present
   if (!code.includes(devtoolsImport)) {
@@ -87,6 +95,9 @@ export function transformRootFile(code: string): string {
     code = `${stylesImport}\n${code}`;
   }
 
+  // VNode bridge is loaded via SSR middleware <script> tag, not here.
+  // (Qwik's resumability skips re-executing SSR module imports on client.)
+
   // Inject QwikDevtools component before closing body tag
   const bodyMatch = code.match(/<body[^>]*>([\s\S]*?)<\/body>/);
   if (bodyMatch) {
@@ -97,4 +108,3 @@ export function transformRootFile(code: string): string {
 
   return code;
 }
-

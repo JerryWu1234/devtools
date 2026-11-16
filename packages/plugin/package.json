@@ -21,7 +21,8 @@
     "test": "vitest --run"
   },
   "dependencies": {
-    "oxc-parser": "^0.158.0"
+    "oxc-parser": "^0.158.0",
+    "rollup-plugin-visualizer": "^6.0.3"
   },
   "devDependencies": {
     "@babel/types": "^8.1.2",

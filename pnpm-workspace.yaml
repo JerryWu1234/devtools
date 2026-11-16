@@ -5,3 +5,7 @@ packages:
 overrides:
   yuku: 0.28.0
   '@tybys/wasm-util': 0.10.4
+
+allowBuilds:
+  esbuild: false
+  sharp: false

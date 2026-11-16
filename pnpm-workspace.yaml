@@ -1,6 +1,7 @@
 packages:
   - packages/*
 
-# Keep the declaration toolchain within CI's minimum release age.
+# Keep build helpers within CI's minimum release age.
 overrides:
   yuku: 0.28.0
+  '@tybys/wasm-util': 0.10.4

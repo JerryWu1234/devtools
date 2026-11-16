@@ -21,26 +21,26 @@
     "test": "vitest --run"
   },
   "dependencies": {
-    "oxc-parser": "^0.120.0"
+    "oxc-parser": "^0.158.0"
   },
   "devDependencies": {
-    "@babel/types": "^7.29.0",
+    "@babel/types": "^8.1.2",
     "@devtools/kit": "workspace:*",
-    "@qwik.dev/core": "2.0.0-beta.29",
+    "@qwik.dev/core": "2.0.0-rc.5",
     "@types/eslint": "9.6.1",
-    "@types/node": "25.5.0",
-    "@typescript-eslint/eslint-plugin": "8.57.1",
-    "@typescript-eslint/parser": "8.57.1",
-    "birpc": "^4.0.0",
+    "@types/node": "26.6.6",
+    "@typescript-eslint/eslint-plugin": "8.72.2",
+    "@typescript-eslint/parser": "8.72.2",
+    "birpc": "^4.2.0",
     "cpy-cli": "^7.0.0",
     "dree": "^5.1.5",
-    "eslint": "10.0.3",
+    "eslint": "10.15.0",
     "fast-glob": "^3.3.3",
-    "image-meta": "^0.2.2",
-    "np": "^11.0.2",
-    "prettier": "3.6.2",
+    "image-meta": "^0.3.1",
+    "np": "^12.1.1",
+    "prettier": "3.10.1",
     "typescript": "5.9.3",
-    "vite": "8.0.0",
-    "vite-plugin-inspect": "^11.3.3"
+    "vite": "8.3.8",
+    "vite-plugin-inspect": "^12.1.0"
   }
 }

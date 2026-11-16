@@ -24,28 +24,34 @@
     "README.md"
   ],
   "peerDependencies": {
-    "@qwik.dev/core": "^2.0.0-beta.29",
-    "@qwik.dev/router": "^2.0.0-beta.29",
-    "@tailwindcss/postcss": "^4.2.1",
-    "@tailwindcss/vite": "^4.2.1",
-    "tailwindcss": "^4.2.1",
-    "vite": "8.0.0"
+    "@qwik.dev/core": "2.0.0-rc.5",
+    "@qwik.dev/router": "2.0.0-rc.5",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@tailwindcss/vite": "^4.3.5",
+    "tailwindcss": "^4.3.5",
+    "vite": "8.3.8"
   },
   "dependencies": {
-    "birpc": "^4.0.0",
+    "birpc": "^4.2.0",
     "dree": "^5.1.5",
-    "oxc-parser": "^0.120.0",
+    "oxc-parser": "^0.158.0",
     "superjson": "^2.2.6",
-    "vite-hot-client": "^2.1.0",
-    "vite-plugin-inspect": "^11.3.3"
+    "vite-hot-client": "^2.2.0",
+    "vite-plugin-inspect": "^12.1.0"
   },
   "type": "module",
   "devDependencies": {
-    "@changesets/cli": "^2.30.0",
-    "@changesets/get-github-info": "^0.8.0",
-    "@changesets/types": "^6.1.0",
-    "@types/node": "^25.5.0",
-    "tsx": "^4.21.0"
+    "@changesets/cli": "^3.0.3",
+    "@changesets/get-github-info": "^1.0.1",
+    "@changesets/types": "^7.0.0",
+    "@qwik.dev/core": "2.0.0-rc.5",
+    "@qwik.dev/router": "2.0.0-rc.5",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "vite": "8.3.8"
   },
   "private": false,
   "publishConfig": {

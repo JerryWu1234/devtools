@@ -7,6 +7,7 @@ import {
 } from '@qwik.dev/core';
 import { _dumpState, _preprocessState } from '@qwik.dev/core/internal';
 import { getHighlighter } from '../../utils/shiki';
+import { escapeHtml } from '../../utils/escapeHtml';
 
 export const StateParser = component$(() => {
   useStyles$(`
@@ -97,7 +98,7 @@ export const StateParser = component$(() => {
       }
       if (!shikiRef?.value) {
         if (highlightedState) {
-          highlightedState.value = currentState;
+          highlightedState.value = escapeHtml(currentState);
         }
         return;
       }
@@ -109,7 +110,7 @@ export const StateParser = component$(() => {
       }
     } catch {
       if (highlightedState) {
-        highlightedState.value = currentState;
+        highlightedState.value = escapeHtml(currentState);
       }
     }
   });
